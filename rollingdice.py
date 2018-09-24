@@ -11,7 +11,7 @@ def rollDice():
         print("beurt "+ str(score+1) +": "+str(roll))
         total += roll
         if score == 9:
-            print("your total is "+ str(total))
+            print("totaal:"+ str(total))
             total = 0
 while True:
     for event in sense.stick.get_events():            
