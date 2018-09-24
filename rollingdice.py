@@ -8,7 +8,7 @@ def rollDice():
     total = 0;
     for score in range(10):
         roll = random.randint(1, 6)
-        print("score van beurt "+ str(score+1) +": "+str(roll))
+        print("beurt "+ str(score+1) +": "+str(roll))
         total += roll
         if score == 9:
             print("your total is "+ str(total))
