@@ -1,23 +1,53 @@
 from sense_hat import SenseHat
-from random import randint
-from time import sleep
+
 sense = SenseHat()
 
-# Generate a random colour
-def pick_random_colour():
-  random_red = randint(0, 255)
-  random_green = randint(0, 255)
-  random_blue = randint(0, 255)
-  return (random_red, random_green, random_blue)
+X = [255, 0, 0]  # Red
+O = [255, 255, 255]  # White
+B = [139,69,19]  # Brown
+W = [255,235,205] # Skin 
+Z = [0,0,0] # Black
 
-pixel = 0
-while pixel < 8:
-    i=0
-    while i < 8:
-        sense.set_pixel(i, pixel, pick_random_colour())
-        sleep(0.4)
-        sense.clear()
-        i+=1
-    pixel+=1
-    if pixel > 8
-    pixel = 0
+
+question_mark = [
+O, O, X, X, X, X, O, O,
+O, O, X, X, X, X, X, O,
+O, O, B, B, W, W, W, O,
+O, O, B, B, W, W, O, O,
+O, O, W, X, O, Z, Z, O,
+O, O, W, W, W, W, W, O,
+O, O, X, X, X, X, O, O,
+O, O, X, X, X, X, O, O
+]
+# when user pressed joystick the mario jumps
+while True:
+    for event in sense.stick.get_events():
+        if format(event.action) == "pressed":
+            
+            question_mark = [
+                O, O, X, X, X, X, O, O,
+                O, O, X, X, X, X, X, O,
+                O, O, B, B, W, W, W, O,
+                O, O, B, B, W, W, O, O,
+                O, O, W, X, O, Z, Z, O,
+                O, O, W, W, W, W, W, O,
+                O, O, X, X, X, X, O, O,
+                O, O, O, O, O, O, O, O
+                ]
+            
+            sense.set_pixels(question_mark)
+        if format(event.action) == "released":
+            question_mark = [
+                O, O, X, X, X, X, O, O,
+                O, O, X, X, X, X, X, O,
+                O, O, B, B, W, W, W, O,
+                O, O, B, B, W, W, O, O,
+                O, O, W, X, O, Z, Z, O,
+                O, O, W, W, W, W, W, O,
+                O, O, X, X, X, X, O, O,
+                O, O, X, X, X, X, O, O
+                ]
+            sense.set_pixels(question_mark)
+
+
+sense.set_pixels(question_mark)
